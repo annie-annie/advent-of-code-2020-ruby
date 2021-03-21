@@ -37,4 +37,12 @@ def calculate_seat_number(seat_spec)
     seat_id = actual_row * 8 + actual_column
 end
 
-puts seats.map { |seat_spec| calculate_seat_number(seat_spec) }.max
+seat_ids = seats.map { |seat_spec| calculate_seat_number(seat_spec) }
+
+min, max = seat_ids.minmax
+
+min.upto(max) do |seat_id|
+    unless seat_ids.include?(seat_id)
+        puts seat_id
+    end
+end
